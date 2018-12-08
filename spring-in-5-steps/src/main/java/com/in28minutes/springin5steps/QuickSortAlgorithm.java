@@ -1,5 +1,7 @@
 package com.in28minutes.springin5steps;
 
+import org.springframework.stereotype.Component;
+
 public class QuickSortAlgorithm implements SortAlgorithm {
 
 	public int[] sort(int[] numbers) {
