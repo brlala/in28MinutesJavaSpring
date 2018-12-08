@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class BooksController {
 	@GetMapping("/books") //controller for the URL
 	public List<Book> getAllBooks(){
-		return Arrays.asList(new Book(1, "Mastering Spring 5.0", "Rangga"));
+		return Arrays.asList(new Book(1, "Mastering Spring 5.2", "Rangga"));
 	}
 }
