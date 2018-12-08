@@ -10,12 +10,16 @@ public class BinarySearchImpl {
 	//it will find classes with @Component that implements sortAlgorithm
 	private SortAlgorithm sortAlgorithm;
 	
-	
+	//Constructor injection - mandatory injection
 	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
 		super();
 		this.sortAlgorithm = sortAlgorithm;
 	}
-
+	
+//	//Setter injection - for optional injection
+//	public void setSortAlgorithm(SortAlgorithm sortAlgorithm) {
+//		this.sortAlgorithm = sortAlgorithm;
+//	}
 
 	public int binarySearch(int[] numbers, int numberToSearch) {
 		//Implementing Sorting Logic
