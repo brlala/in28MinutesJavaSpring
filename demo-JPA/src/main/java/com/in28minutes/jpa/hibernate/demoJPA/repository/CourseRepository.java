@@ -45,6 +45,9 @@ public class CourseRepository {
 		em.persist(course1);
 		Course course2 = new Course("Angular JS service");
 		em.persist(course2);
+		Course course3 = findById(10002l);
+		course3.setName("Changed name");
+		em.persist(course3);
 		em.flush(); //whatever changes up to now will be sent to database
 		
 		//EntityManager tracking clear

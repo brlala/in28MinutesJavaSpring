@@ -33,7 +33,8 @@ public class JPQLTest {
 	@Test
 	public void jpql_basic() {
 		//query is without class expectation
-		Query query = em.createQuery("Select c From Course c");
+//		Query query = em.createQuery("Select c From Course c");
+		Query query = em.createNamedQuery("query_get_all_courses");
 		List resultList = query.getResultList();
 		logger.info("Select s From Course c -> {}",resultList);
 	}
@@ -41,14 +42,18 @@ public class JPQLTest {
 	@Test
 	public void jpql_typed() {
 		//typed query is when you want to retrieve object of type class
-		TypedQuery<Course> query = em.createQuery("Select c From Course c", Course.class);
+//		TypedQuery<Course> query = em.createQuery("Select c From Course c", Course.class);
+		
+		//Using @NamedQuery
+		TypedQuery<Course> query = em.createNamedQuery("query_get_all_courses", Course.class);
 		List<Course> resultList = query.getResultList();
 		logger.info("Select c From Course c -> {}",resultList);
 	}
 	
 	@Test
 	public void jpql_where() {
-		TypedQuery<Course> query = em.createQuery("Select c From Course c where name like '%50%'", Course.class);
+//		TypedQuery<Course> query = em.createQuery("Select c From Course c where name like '%50%'", Course.class);
+		TypedQuery<Course> query = em.createNamedQuery("query_get_like_50", Course.class);		
 		List<Course> resultList = query.getResultList();
 		logger.info("Select c From Course c -> {}",resultList);
 	}
