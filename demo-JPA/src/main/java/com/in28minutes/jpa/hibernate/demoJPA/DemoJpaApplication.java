@@ -29,6 +29,6 @@ public class DemoJpaApplication implements CommandLineRunner{
 //		logger.info("Course 10001 -> {}",course);
 //		repository.save(new Course("Microservices in 100 steps"));
 		
-		repository.playWithEntityManager();
+//		repository.playWithEntityManager();
 	}
 }
