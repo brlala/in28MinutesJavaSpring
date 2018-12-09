@@ -38,16 +38,26 @@ public class CourseRepository {
 	 
 	 //If it is in a transactional scope, after creating an object, whatever changes made will be automatically persist
 	 public void playWithEntityManager() {
-//		 logger.info("playWithEntityManager - start");
-		 Course course1 = new Course("Entity Manager service");
+//		logger.info("playWithEntityManager - start");
+		 
+		//CourseCreation
+		Course course1 = new Course("Entity Manager service");
 		em.persist(course1);
+		Course course2 = new Course("Angular JS service");
+		em.persist(course2);
+		em.flush(); //whatever changes up to now will be sent to database
+		
+		//EntityManager tracking clear
+//		em.detach(course2); // changes to course2 will no longer be tracked
+//		em.clear(); // clear all objects tracked by entity manager, thsi will make changes not persist anymore
 		
 		//This changes will be saved even thou there is no persist method.
 		course1.setName("Entity Manager services - Updated");
-		
-		 Course course2 = new Course("Angular JS service");
-		em.persist(course2);
-		
 		course2.setName("Angular JS service - Updated");
+		
+		em.refresh(course1);//refresh the data of course 1, changes will be lost
+		em.flush();
+
+		
 	 }
 }
