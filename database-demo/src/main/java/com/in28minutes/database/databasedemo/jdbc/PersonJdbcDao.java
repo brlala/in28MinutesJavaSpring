@@ -28,7 +28,17 @@ public class PersonJdbcDao {
 	}
 	
 	public List<Person> findByName(String name){
-		//this will return a resultset but we still have to map it to a database, queries are passed in as array of parameter
+		//demo for find by Name, could be more than one person with same name
 		return jdbcTemplate.query("select * from person where name=?", new Object[] {name}, new BeanPropertyRowMapper<Person>(Person.class));
+	}
+	
+	public int deleteById(int id){
+		//update and delete operation uses jdbctemplate.update, and we dont need to map it, the method will return an int of how many rows affected
+		return jdbcTemplate.update("delete from person where id=?", new Object[] {id});
+	}
+	
+	public int deleteByIdName(int id, String name){
+		//update and delete operation uses jdbctemplate.update, and we dont need to map it, the method will return an int of how many rows affected
+		return jdbcTemplate.update("delete from person where id=? and name=?", new Object[] {id,name});
 	}
 }
