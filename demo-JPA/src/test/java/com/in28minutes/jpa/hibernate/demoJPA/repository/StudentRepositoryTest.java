@@ -59,4 +59,13 @@ public class StudentRepositoryTest {
 		logger.info("student -> {}",student);
 		logger.info("passport -> {}",student.getPassport());
 	}
+	
+	//Bidirectional - getting student details from Passport
+	@Test
+	@Transactional
+	public void retrievePassportAndAssociatedStudent() {
+		Passport passport = em.find(Passport.class, 40001l);
+		logger.info("passport -> {}",passport);
+		logger.info("student -> {}",passport.getStudent());
+	}
 }
