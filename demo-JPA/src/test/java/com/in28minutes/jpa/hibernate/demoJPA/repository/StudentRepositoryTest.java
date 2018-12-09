@@ -68,4 +68,22 @@ public class StudentRepositoryTest {
 		logger.info("passport -> {}",passport);
 		logger.info("student -> {}",passport.getStudent());
 	}
+	
+	
+	//Bidirectional - Many to Many
+	@Test
+	@Transactional
+	public void retrieveStudentAndCourses() {
+		Student student = em.find(Student.class, 20001l);
+		logger.info("student -> {}",student);
+		logger.info("courses -> {}",student.getCourses());
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveCourseAndStudents() {
+		Course course = em.find(Course.class, 20001l);
+		logger.info("courses -> {}",course);
+		logger.info("student -> {}",course.getStudents());
+	}
 }
