@@ -24,9 +24,11 @@ public class DemoJpaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course = repository.findById(10001l);
+//		Course course = repository.findById(10001l);
+//		
+//		logger.info("Course 10001 -> {}",course);
+//		repository.save(new Course("Microservices in 100 steps"));
 		
-		logger.info("Course 10001 -> {}",course);
-		repository.save(new Course("Microservices in 100 steps"));
+		repository.playWithEntityManager();
 	}
 }
