@@ -19,6 +19,16 @@ public class PersonJdbcDao {
 	//select * from person
 	public List<Person> findAll(){
 		//this will return a resultset but we still have to map it to a database
-		return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper(Person.class));
+		return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper<Person>(Person.class));
+	}
+	
+	public Person findById(int id){
+		//this will return a resultset but we still have to map it to a database, queries are passed in as array of parameter
+		return jdbcTemplate.queryForObject("select * from person where id=?", new Object[] {id}, new BeanPropertyRowMapper<Person>(Person.class));
+	}
+	
+	public List<Person> findByName(String name){
+		//this will return a resultset but we still have to map it to a database, queries are passed in as array of parameter
+		return jdbcTemplate.query("select * from person where name=?", new Object[] {name}, new BeanPropertyRowMapper<Person>(Person.class));
 	}
 }
