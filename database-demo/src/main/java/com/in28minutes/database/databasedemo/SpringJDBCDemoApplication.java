@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.in28minutes.database.databasedemo.entity.Person;
 import com.in28minutes.database.databasedemo.jdbc.PersonJdbcDao;
 
-@SpringBootApplication
-public class DatabaseDemoApplication implements CommandLineRunner {
+//@SpringBootApplication
+public class SpringJDBCDemoApplication implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -21,18 +21,18 @@ public class DatabaseDemoApplication implements CommandLineRunner {
 	PersonJdbcDao dao;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DatabaseDemoApplication.class, args);
+		SpringApplication.run(SpringJDBCDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("All users -> {}", dao.findAll());
 		logger.info("User id -> 10001 {}", dao.findById(10001));
-		logger.info("Name -> Pieter {}", dao.findByName("Pieter"));
-		logger.info("Deleting 10002 -> rows affected - {}", dao.deleteById(10002));
-		logger.info("Deleting Pieter(10004) -> rows affected - {}", dao.deleteByIdName(10004,"Pieter"));
-		logger.info("Inserting Pieter(10005) -> rows affected - {}", dao.insert(new Person(10005,"Ley","Berlin",new Date())));
-		logger.info("Updating Pieter(10003) -> rows affected - {}", dao.update(new Person(10003,"Peter","Uruguay",new Date())));
+//		logger.info("All users -> {}", dao.findAll());
+//		logger.info("Name -> Pieter {}", dao.findByName("Pieter"));
+//		logger.info("Deleting 10002 -> rows affected - {}", dao.deleteById(10002));
+//		logger.info("Deleting Pieter(10004) -> rows affected - {}", dao.deleteByIdName(10004,"Pieter"));
+//		logger.info("Inserting Pieter(10005) -> rows affected - {}", dao.insert(new Person(10005,"Ley","Berlin",new Date())));
+//		logger.info("Updating Pieter(10003) -> rows affected - {}", dao.update(new Person(10003,"Peter","Uruguay",new Date())));
 		//10003,  'Pieter', 'Amsterdam',sysdate()
 	}
 }

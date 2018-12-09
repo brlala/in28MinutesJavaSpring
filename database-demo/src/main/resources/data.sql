@@ -1,4 +1,5 @@
-create table person
+/*Table will be automatically created by JPA
+ * create table person
 (
    id integer not null,
    name varchar(255) not null,
@@ -6,6 +7,7 @@ create table person
    birth_date timestamp,
    primary key(id)
 );
+*/
 
 INSERT INTO PERSON (ID, NAME, LOCATION, BIRTH_DATE ) 
 VALUES(10001,  'Ranga', 'Hyderabad',sysdate());
