@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,8 +19,10 @@ public class Student {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String name;
+	
+	@OneToOne
+	private Passport passport;
 	
 	public Student() {}
 	
