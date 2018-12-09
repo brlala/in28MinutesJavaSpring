@@ -1,5 +1,7 @@
 package com.in28minutes.jpa.hibernate.demoJPA.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.in28minutes.jpa.hibernate.demoJPA.entity.Course;
+import com.in28minutes.jpa.hibernate.demoJPA.entity.Review;
 
 @Repository
 @Transactional
@@ -60,7 +63,35 @@ public class CourseRepository {
 		
 		em.refresh(course1);//refresh the data of course 1, changes will be lost
 		em.flush();
-
-		
+	 }
+	 
+	 public void addHardcodedReviewsForCourse() {
+		 //get the course 10003
+		 Course course = findById(10001l);
+		 logger.info("course.getReviews() -> {}",course.getReviews());
+		 
+		 //add 2 reviews, setting ManyToOneRelationship
+		 Review review1 = new Review("5", "Great 5-minutes work");
+		 Review review2 = new Review("5", "Hatsoff");
+		 
+		 course.addReview(review1);
+		 review1.setCourse(course);
+		 course.addReview(review2);
+		 review2.setCourse(course);
+		 
+		 //save to database
+		 em.persist(review1);
+		 em.persist(review2);
+	 }
+	 
+	 //Generic method
+	 public void addReviewsForCourse(Long courseId,List<Review> reviews) {
+		 Course course = findById(courseId);
+		 
+		 for (Review review : reviews) {
+			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
+		 }
 	 }
 }
