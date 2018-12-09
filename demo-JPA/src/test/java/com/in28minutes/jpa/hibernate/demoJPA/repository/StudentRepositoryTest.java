@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.in28minutes.jpa.hibernate.demoJPA.DemoJpaApplication;
 import com.in28minutes.jpa.hibernate.demoJPA.entity.Course;
+import com.in28minutes.jpa.hibernate.demoJPA.entity.Passport;
 import com.in28minutes.jpa.hibernate.demoJPA.entity.Student;
 
 @RunWith(SpringRunner.class)
@@ -30,6 +31,26 @@ public class StudentRepositoryTest {
 	
 	@Autowired
 	EntityManager em;
+	
+	@Test
+	@Transactional //Persistence Context place where info is stored
+	public void someTest() {
+		//Database Operation 1 - retrieve student
+		Student student = em.find(Student.class, 20001l);
+		//Persistence Context contains (student)
+		
+		//Database Operation 2 - retrieve passport
+		Passport passport = student.getPassport();
+		//Persistence Context contains (student, passport)
+		
+		//Database Operation 3 - update student
+		passport.setNumber("E123457");
+		//Persistence Context contains (student, passport++)
+		
+		//Database Operation 4 - update student
+		student.setName("Ranga - updated");
+		//Persistence Context contains (student++, passport++)
+	}
 	
 	@Test
 	@Transactional
