@@ -9,11 +9,12 @@
 <body>
 My First JSP!! 
 <!-- Hello ${name1} variables in model will be placed here -->
-
+<font color="red">${errorMessage}</font>
 <form method="post">
 Name : <input type="text" name="name"/>
 <br>
-Password : <input type="password" name="password"/> <input type="submit"/>
+Password : <input type="password" name="pw"/> <input type="submit"/>
 </form>
+
 </body>
 </html>

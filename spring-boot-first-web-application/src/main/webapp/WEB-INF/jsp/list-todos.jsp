@@ -6,7 +6,8 @@
 <meta charset="ISO-8859-1">
 <title>First Web Application</title>
 </head>
-<body>welcome ${name}! Your password is ${password}
-<br><a href="/list-todos">click here to manage your to-do</a>
+<body>Here are the list of to-dos:
+${todos}
+<br>
 </body>
 </html>

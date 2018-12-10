@@ -9,28 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.in28minutes.springboot.web.springbootfirstwebapplication.service.LoginService;
+import com.in28minutes.springboot.web.springbootfirstwebapplication.service.TodoService;
 
 @Controller
 //@ResponseBody
-public class LoginController {
+public class TodoController {
 	@Autowired
-	LoginService loginService;
+	TodoService TodoService;
 	
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String showWelcomePage(@RequestParam String name,@RequestParam String pw, ModelMap model) {
-		boolean isValid = loginService.validateUser(name,pw);
-		if (!isValid) {
-			model.put("errorMessage", "Invalid Credentials");
-			return "login";
-		}
-
-		model.put("name", name);
-		model.put("password", pw);
-		return "welcome";
-	}
-	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String loginMessage(ModelMap model) {
-		return "login";
+	@RequestMapping(value="/list-todos",method=RequestMethod.GET)
+	public String showTodos(ModelMap model) {
+		model.put("todos", TodoService.retrieveTodos("in28Minutes"));
+		return "list-todos";
 	}
 }
