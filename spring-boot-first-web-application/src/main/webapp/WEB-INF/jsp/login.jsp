@@ -7,6 +7,13 @@
 <title>First Web Application</title>
 </head>
 <body>
-My First JSP!! ${name1}
+My First JSP!! 
+<!-- Hello ${name1} variables in model will be placed here -->
+
+<form method="post">
+Name : <input type="text" name="name"/>
+<br>
+Password : <input type="password" name="password"/> <input type="submit"/>
+</form>
 </body>
 </html>
